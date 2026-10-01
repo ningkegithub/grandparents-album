@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>爷爷奶奶的时光相册</title>
+<link rel="stylesheet" href="album.css?v=20261001-grandparents">
+<script src="photos.js?v=20261001-grandparents" defer></script>
+<script src="album.js?v=20261001-grandparents" defer></script>
+<meta name="description" content="宁重瑛与刘庆芬的家庭时光相册">
+<meta name="robots" content="noindex,nofollow,noarchive">
+</head>
+<body>
+<div id="cover">
+  <div class="seal grandparents-seal"><span>爷爷</span><span>奶奶</span></div>
+  <h1>时光相册</h1>
+  <div class="sub">宁重瑛 · 刘庆芬</div>
+  <div class="meta">2004 — 2026</div>
+  <button class="btn" id="startBtn">打开相册</button>
+  <div class="credit">背景音乐 · Meditation Impromptu 03<br>Kevin MacLeod（incompetech.com）· CC BY 3.0 授权</div>
+</div>
+<button id="musicBtn" title="播放背景音乐" aria-label="播放背景音乐" aria-pressed="false">♫</button>
+<main id="album" hidden>
+  <nav id="yearToolbar" class="toolbar" aria-label="按年份看照片">
+    <label class="year-picker"><span>年份</span><select id="yearSelect" aria-label="选择年份，选择后直接跳到这一年"></select></label>
+    <span id="photoTotal">389 张照片</span>
+  </nav>
+  <p id="musicStatus" role="status"></p>
+  <p class="album-note">按来源相册显示日期排列；翻拍、扫描及导入日期不等同于原始拍摄日期。<br>高清照片已按手机浏览优化。</p>
+  <div id="timeline"></div>
+  <footer>愿时光温柔以待<br>把每一个笑容都收好 ❤</footer>
+</main>
+<noscript><p>请开启浏览器的 JavaScript 后刷新，就能看到相册。</p></noscript>
+<dialog id="viewer" aria-labelledby="vtitle" aria-describedby="vdesc">
+  <header class="viewer-topbar">
+    <label class="viewer-year-picker"><span>年份</span><select id="viewerYearSelect" aria-label="切换年份，查看这一年的第一张照片"></select></label>
+    <button id="savePhoto" aria-controls="saveHelp" aria-expanded="false">保存</button>
+    <button class="vbtn" id="vclose" aria-label="返回相册" title="返回相册" autofocus>返回相册</button>
+  </header>
+  <div id="stage"><img id="vimg" alt=""><div id="imageFeedback" role="status" hidden><p id="imageStatus"></p><button id="retryImage" hidden>重新加载</button></div></div>
+  <div id="vbar">
+    <div id="captionCopy" class="caption-copy" aria-hidden="false"><div class="when"><span id="vwhen"></span> · <span id="vtitle"></span></div><div class="what" id="vdesc"></div></div>
+    <div id="saveHelp" class="save-help" role="status" aria-hidden="true"><p id="saveMainHint">长按照片，选择“保存图片”</p><p>若没有保存选项，可用手机浏览器打开本页重试。电脑可右键保存。</p></div>
+  </div>
+  <nav class="viewer-bottom" aria-label="切换照片">
+    <button class="vbtn" id="vprev" aria-label="上一张">‹ 上一张</button>
+    <div class="count" id="vcount" aria-live="polite"></div>
+    <button class="vbtn" id="vnext" aria-label="下一张">下一张 ›</button>
+  </nav>
+</dialog>
+<audio id="bgm" loop preload="none" playsinline src="music/bgm.mp3"></audio>
+</body>
+</html>
