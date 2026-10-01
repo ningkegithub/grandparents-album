@@ -7,6 +7,7 @@ const viewer=$('viewer'), image=$('vimg'), audio=$('bgm');
 let current=0,rendered=false,returnFocus=null,imageRequest=0,returnScroll=0;
 const yearSections=[],yearFirstPhoto=new Map();
 const photoYear=p=>(p.when.match(/^\d{4}/)||['日期待确认'])[0];
+const YEAR_MEMORIES = {"2005":"那一年，宁可和卢慧还在北京工作。爷爷奶奶来北京一起游玩、登长城，也在租住的小屋里留下了日常合影。","2009":"四月在老家石燕塘留影。这一年，爷爷奶奶来到爱尔兰看望宁可一家。"};
 // A touch or mouse interaction must not leave a keyboard focus ring behind.
 document.addEventListener('keydown',()=>{document.documentElement.dataset.input='keyboard';});
 document.addEventListener('pointerdown',()=>{document.documentElement.dataset.input='pointer';},{passive:true});
@@ -17,7 +18,7 @@ function renderAlbum(){
   photos.forEach((p,index)=>{
     const match=p.when.match(/^\d{4}/),year=match?match[0]:'日期待确认';
     if(year!==previousYear){previousYear=year;const section=document.createElement('section');section.className='year';section.id='year-'+year;yearSections.push(section);yearFirstPhoto.set(year,index);
-      const heading=textEl('h2','');heading.tabIndex=-1;heading.append(textEl('span',year));section.append(heading);grid=document.createElement('div');grid.className='grid';section.append(grid);fragment.append(section);
+      const heading=textEl('h2','');heading.tabIndex=-1;heading.append(textEl('span',year));section.append(heading);if(YEAR_MEMORIES[year])section.append(textEl('p',YEAR_MEMORIES[year],'year-memory'));grid=document.createElement('div');grid.className='grid';section.append(grid);fragment.append(section);
       const option=textEl('option',year==='日期待确认'?year:year+'年');option.value=year;$('yearSelect').append(option);const viewerOption=textEl('option',option.textContent);viewerOption.value=year;$('viewerYearSelect').append(viewerOption);
     }
     const card=document.createElement('button');card.type='button';card.className='card';card.dataset.src=p.src;
