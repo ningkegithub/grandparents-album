@@ -71,3 +71,5 @@ button,select{font-family:inherit}button:focus,select:focus,[tabindex]:focus{out
 /* Only the seal wording and source-date note differ from the approved template. */
 #cover .grandparents-seal{flex-direction:column;font-size:23px;line-height:1.15;gap:2px;letter-spacing:2px;}
 .album-note{font-size:11px;line-height:1.7;color:var(--soft);text-align:center;margin:12px 12px 8px;}
+
+.year-memory{max-width:520px;margin:0 auto 18px;padding:0 8px;color:var(--soft);font-size:13px;line-height:1.8;text-align:left;}
